@@ -4,13 +4,13 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
     public float speed;
-    public float TimeInverse;
+    public float timeInverse;
 
     bool front = false;
 
     void Start()
     {
-        Invoke("InverseDirection", TimeInverse);
+        Invoke("InverseDirection", timeInverse);
     }
 
     void Update()
@@ -32,8 +32,8 @@ public class Enemy : MonoBehaviour {
             this.gameObject.GetComponentInChildren<EnemyHit>().HitOff();
 
             other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,200));
-            other.gameObject.GetComponent<Player>().life--;
+            other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,400));
+            Invoke("Restart", 1f);
         }
 
     }
@@ -46,7 +46,12 @@ public class Enemy : MonoBehaviour {
     public void InverseDirection()
     {
         front = !front;
-        Invoke("InverseDirection", TimeInverse);
+        Invoke("InverseDirection", timeInverse);
+    }
+
+    void Restart()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 
 }

@@ -26,4 +26,5 @@ public class EnemyHit : MonoBehaviour {
         }
 
     }
+
 }

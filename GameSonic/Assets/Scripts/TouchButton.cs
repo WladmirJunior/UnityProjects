@@ -89,11 +89,11 @@ public class TouchButton : MonoBehaviour {
     private void EndController()
     {
 
-        if (functionSelected == ButtonFunction.BACK && !controllerPlayer.jumping && controllerPlayer.Motion < 0)
+        if (functionSelected == ButtonFunction.BACK && controllerPlayer.Motion < 0)
         {
             controllerPlayer.Motion = 0;
         }
-        else if (functionSelected == ButtonFunction.FORWAD && !controllerPlayer.jumping && controllerPlayer.Motion > 0)
+        else if (functionSelected == ButtonFunction.FORWAD && controllerPlayer.Motion > 0)
         {
             controllerPlayer.Motion = 0;
         }
@@ -114,8 +114,11 @@ public class TouchButton : MonoBehaviour {
     /// </summary>
     void JumpController()
     {
-        controllerPlayer.Jump();
-        controllerPlayer.jumping = true;
+        if (controllerPlayer.controllable)
+        {
+            controllerPlayer.Jump();
+            controllerPlayer.jumping = true;
+        }
     }
 
     /// <summary>
@@ -124,6 +127,9 @@ public class TouchButton : MonoBehaviour {
     /// <param name="multiplier"> Utilizada para tranformar o valor em positivo ou negativo</param>
     void MoveController(int multiplier)
     {
-        controllerPlayer.Motion += (deltaAxis * multiplier);
+        if (controllerPlayer.controllable)
+        {
+            controllerPlayer.Motion += (deltaAxis * multiplier);
+        }
     }
 }
