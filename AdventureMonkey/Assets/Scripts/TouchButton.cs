@@ -28,6 +28,11 @@ public class TouchButton : MonoBehaviour {
 
     void Update()
     {
+        if (!controllerPlayer.controllable)
+        {
+            this.gameObject.SetActive(false);
+        }
+
         if (Input.touchCount == 0 && !controllerPlayer.jumping)
         {
             controllerPlayer.Motion = 0;

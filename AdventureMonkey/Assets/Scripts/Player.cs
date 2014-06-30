@@ -5,13 +5,16 @@ public class Player : MonoBehaviour {
 
     public float speed;
     public float jumpForce;
-    public float life;
+    //public float life;
 
     public bool jumping = false;
     public bool controllable = true;
 
     public int itens = 0;
-    
+
+    private Animator anim;
+    private int direction = -2;
+
     private float motion;
     public float Motion
     {
@@ -19,21 +22,39 @@ public class Player : MonoBehaviour {
         set { motion = Mathf.Clamp(value, -1, 1); }
     }
 
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void FixedUpdate()
     {
         if (controllable)
         {
-            rigidbody2D.velocity = new Vector2(motion * speed, rigidbody2D.velocity.y);
-            Debug.Log("Motion: " + motion);
+            rigidbody2D.velocity = new Vector2(motion * speed, rigidbody2D.velocity.y);         
 
             // Para teste na unity
             rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rigidbody2D.velocity.y);
+
+            anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
+
+
+            if (rigidbody2D.velocity.x < 0)
+            {
+                direction = 2;
+            }
+            else if (rigidbody2D.velocity.x > 0)
+            {
+                direction = -2;
+            }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rigidbody2D.AddForce(new Vector2(0, jumpForce));
             }
         }
+
+        transform.localScale = new Vector3(direction, 2F, 2F);
     }
 
     void Update()
@@ -52,12 +73,7 @@ public class Player : MonoBehaviour {
     public void Stop()
     {
         rigidbody2D.velocity = new Vector2(0, 0);
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(100,100,200,100), "Vida: "+life);
-		GUI.Label(new Rect(100,125,200,100), "Itens: "+itens+"/10");
+        anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
     }
 
 }

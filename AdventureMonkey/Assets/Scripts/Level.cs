@@ -26,6 +26,9 @@ public class Level : MonoBehaviour {
     private bool startLevel = false;
 
     private bool moveCamera = true;
+    public float limitEndLevel;
+
+    Vector3 positionCamera = Vector3.zero;
 
     public bool MoveCamera
     {
@@ -39,7 +42,7 @@ public class Level : MonoBehaviour {
     void Start()
     {
         gui.SetActive(false);
-        player = GetComponentInChildren<Player>();
+        player = GameObject.Find("Player").GetComponent<Player>();
         timeMove /= 100;
     }
 
@@ -69,8 +72,16 @@ public class Level : MonoBehaviour {
             case LevelMode.STATIC:
                 if (moveCamera)
                 {
+                    positionCamera = Camera.main.transform.position;
+                    positionCamera.x = player.transform.position.x;
+                    if (positionCamera.x < 0)
+                        positionCamera.x = 0;
+                    if (positionCamera.x > limitEndLevel)
+                        positionCamera.x = limitEndLevel;
+                    Camera.main.transform.position = positionCamera;
+
                     // Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(this.transform.position.x, this.transform.position.y , Camera.main.transform.position.z), 0.2f); // (transform.position.x, transform.position.y, Camera.main.transform.position.z);
-                    Camera.main.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
+                    //Camera.main.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
                 }
             break;
             case LevelMode.MOVE_UP:
@@ -113,11 +124,11 @@ public class Level : MonoBehaviour {
 
         }
 
-        if (player.life < 0)
-        {
-            Application.LoadLevel("Main");
+            //if (player.life < 0)
+            //{
+            //    Application.LoadLevel("Main");
             
-        }
+            //}
 
         if (player.itens == itemsAmount && !endLevel)
         {
@@ -132,7 +143,7 @@ public class Level : MonoBehaviour {
     {
 
         GUI.Label(new Rect(500, 500, 100, 100), Time.timeSinceLevelLoad + "");
-
+        GUI.Label(new Rect(100, 125, 200, 100), "Itens: " + player.itens + "/" + itemsAmount);
         //if (player.itens == itemsAmount)
         //{
         //    GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 100), "Muito bem!!");
@@ -157,21 +168,17 @@ public class Level : MonoBehaviour {
         player.Stop();
         gui.SetActive(true);
 
+        s1.SetActive(true);
+
         if (timeFinishLevel <= time3Star)
         {
-            s1.SetActive(true);
             s2.SetActive(true);
             s3.SetActive(true);
         }
         else if (timeFinishLevel > time3Star && timeFinishLevel <= time2Star)
         {
-            s1.SetActive(true);
             s2.SetActive(true);
-        }
-        else
-        {
-            s1.SetActive(true);
-        }        
+        }     
     }
 
     void NextLevel()
