@@ -13,7 +13,11 @@ public class Player : MonoBehaviour {
     public int itens = 0;
 
     private Animator anim;
-    private int direction = -2;
+    public float scale = 1.5F;
+    private float direction = 1.5F;
+
+    public Transform groundCheck;
+    public LayerMask whatIsGround;
 
     private float motion;
     public float Motion
@@ -41,11 +45,11 @@ public class Player : MonoBehaviour {
 
             if (rigidbody2D.velocity.x < 0)
             {
-                direction = 2;
+                direction = (scale) * -1;
             }
             else if (rigidbody2D.velocity.x > 0)
             {
-                direction = -2;
+                direction = (scale) * 1;
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -54,13 +58,18 @@ public class Player : MonoBehaviour {
             }
         }
 
-        transform.localScale = new Vector3(direction, 2F, 2F);
+        transform.localScale = new Vector3(direction, scale, scale);
+
+        anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
     }
 
     void Update()
     {
         // Verifica se esta pulando ou caindo pela sua forca vertical
-        jumping = rigidbody2D.velocity.y != 0;
+        jumping = rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.2F, whatIsGround);
+        //jumping = !Physics2D.OverlapCircle(groundCheck.position, 1F, whatIsGround);
+        anim.SetBool("Grounded", !jumping);
+
     }
 
     public void Jump()
@@ -68,6 +77,7 @@ public class Player : MonoBehaviour {
         if (!jumping)
         {
             rigidbody2D.AddForce(new Vector2(0, jumpForce));
+            anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
         }       
     }
     public void Stop()
