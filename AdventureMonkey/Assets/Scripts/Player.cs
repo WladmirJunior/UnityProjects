@@ -37,8 +37,9 @@ public class Player : MonoBehaviour {
         {
             rigidbody2D.velocity = new Vector2(motion * speed, rigidbody2D.velocity.y);         
 
-            // Para teste na unity
+#if UNITY_EDITOR //Para teste na unity
             rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rigidbody2D.velocity.y);
+#endif
 
             anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
 
@@ -66,7 +67,17 @@ public class Player : MonoBehaviour {
     void Update()
     {
         // Verifica se esta pulando ou caindo pela sua forca vertical
-        jumping = rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.2F, whatIsGround);
+        //jumping = rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.2F, whatIsGround);
+        
+        if(rigidbody2D.velocity.y != 0)
+        {
+            jumping = true;
+        }
+        else
+        {
+            jumping = !Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround);
+        }
+        
         //jumping = !Physics2D.OverlapCircle(groundCheck.position, 1F, whatIsGround);
         anim.SetBool("Grounded", !jumping);
 

@@ -169,16 +169,31 @@ public class Level : MonoBehaviour {
         gui.SetActive(true);
 
         s1.SetActive(true);
+        SaveStars(1);
 
         if (timeFinishLevel <= time3Star)
         {
             s2.SetActive(true);
             s3.SetActive(true);
+            SaveStars(3);
         }
         else if (timeFinishLevel > time3Star && timeFinishLevel <= time2Star)
         {
             s2.SetActive(true);
+            SaveStars(2);
         }     
+    }
+
+    void SaveStars(int n)
+    {
+        if (n > PlayerPrefs.GetInt("StarsLevel - " + Application.loadedLevel))
+        {
+            PlayerPrefs.SetInt("StarsLevel - " + Application.loadedLevel, n);
+        }
+
+        PlayerPrefs.SetInt("LevelUnlock - " + (Application.loadedLevel + 1), 1);
+
+        print("LEVEL ATUAL: "+Application.loadedLevel +  "   LIBERADO: "+ (Application.loadedLevel + 1));
     }
 
     void NextLevel()

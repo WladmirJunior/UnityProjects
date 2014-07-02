@@ -8,6 +8,8 @@ public class BackGround : MonoBehaviour {
 	private Transform tCamera;
 	private Vector3 p = Vector3.zero;
 
+    public float motion = 0.5F;
+
 	void Start () {
 		tCamera = Camera.main.transform;
 	}
@@ -15,7 +17,7 @@ public class BackGround : MonoBehaviour {
 	void Update () {
 		// calculo que move o paxalax em metade do deslocamento da camera.
 		// tambem  faz o paralax avançar bruscamente a cada 20 unidades de movimento da camera
-		p.Set(tCamera.position.x - (tCamera.position.x*0.5f)%20f + 10f, 0f, 1f);
+		p.Set(tCamera.position.x - (tCamera.position.x*motion)%20f + 10f, 0f, 1f);
 		transform.position = p;
 	}
 

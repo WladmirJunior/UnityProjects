@@ -6,6 +6,7 @@ public enum GUIButton
     MENU,
     RELOAD,
     NEXT,
+    EXIT,
     OTHER,
 }
 
@@ -25,6 +26,25 @@ public class TouchGUI : MonoBehaviour
 
     void Update()
     {
+        // Remover isso daqui
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Application.LoadLevel("Selection");
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Application.LoadLevel(Application.loadedLevel + 1);
+        }
+
+        //
+
 
         // Este for percorre o array que armazena todos os toque do usuario na tela
         for (int i = 0; i < Input.touches.Length; i++)
@@ -55,13 +75,16 @@ public class TouchGUI : MonoBehaviour
                         switch (type)
                         {
                             case GUIButton.MENU:
-                                Application.LoadLevel("Main");
+                                Application.LoadLevel("Selection");
                             break;
                             case GUIButton.RELOAD:
                                 Application.LoadLevel(Application.loadedLevel);
                             break;
                             case GUIButton.NEXT:
                                 Application.LoadLevel(Application.loadedLevel + 1);
+                            break;
+                            case GUIButton.EXIT:
+                            Application.Quit();
                             break;
                             case GUIButton.OTHER:
                                 Application.LoadLevel(otherLevel);

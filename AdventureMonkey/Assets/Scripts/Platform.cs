@@ -41,7 +41,6 @@ public class Platform : MonoBehaviour {
         }
         if (player.transform.position.y < pointB.position.y)
         {
-            print("Collider eh false");
             this.collider2D.isTrigger = true;
         }
 
