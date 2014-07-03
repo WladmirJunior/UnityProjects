@@ -16,8 +16,7 @@ public class BackGround : MonoBehaviour {
 
 	void Update () {
 		// calculo que move o paxalax em metade do deslocamento da camera.
-		// tambem  faz o paralax avançar bruscamente a cada 20 unidades de movimento da camera
-		p.Set(tCamera.position.x - (tCamera.position.x*motion)%20f + 10f, 0f, 1f);
+		p.Set(tCamera.position.x - (tCamera.position.x*motion) + 10f, 0f, 1f);
 		transform.position = p;
 	}
 

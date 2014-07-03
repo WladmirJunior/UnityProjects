@@ -66,16 +66,19 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
+
+        // Debug.Log("Colisor:   " + !Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround));
+
         // Verifica se esta pulando ou caindo pela sua forca vertical
         //jumping = rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.2F, whatIsGround);
         
-        if(rigidbody2D.velocity.y != 0)
+        if(rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround))
         {
             jumping = true;
         }
-        else
+        if (Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround))
         {
-            jumping = !Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround);
+            jumping = false;
         }
         
         //jumping = !Physics2D.OverlapCircle(groundCheck.position, 1F, whatIsGround);
@@ -93,8 +96,9 @@ public class Player : MonoBehaviour {
     }
     public void Stop()
     {
-        rigidbody2D.velocity = new Vector2(0, 0);
+        rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
+        anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
     }
 
 }

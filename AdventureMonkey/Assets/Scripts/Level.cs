@@ -78,6 +78,7 @@ public class Level : MonoBehaviour {
                         positionCamera.x = 0;
                     if (positionCamera.x > limitEndLevel)
                         positionCamera.x = limitEndLevel;
+                    
                     Camera.main.transform.position = positionCamera;
 
                     // Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(this.transform.position.x, this.transform.position.y , Camera.main.transform.position.z), 0.2f); // (transform.position.x, transform.position.y, Camera.main.transform.position.z);
