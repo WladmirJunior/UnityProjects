@@ -1,30 +1,64 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Enemy : MonoBehaviour {
 
     public float speed;
+    
+    // o inimigo terá o sprite invertido
+    public bool inverse = true;
     public float timeInverse;
+    // o inimigo voa
+     public bool fly = false;
+    public float timeInverseFly;
+    // o inimigo tem uma pausa de movimentos
+    public bool breakAction = false;
+    public float timeBreak;
 
+
+    private bool breakActive = false;
     public GameObject level;
 
-    public bool front = false;
+    private Vector3 startScale;
+
+    public bool front = false, inverseFly = false;
 
     void Start()
     {
+        if(breakAction)
+            Invoke("Break", timeInverseFly);
+
+        startScale = transform.localScale;
         Invoke("InverseDirection", timeInverse);
+        Invoke("InverseFly", timeInverseFly);
         level = GameObject.Find("Level");
     }
 
     void Update()
     {
-        if (front)
+        if (inverse)
         {
-            this.transform.Translate((Vector3.right * Time.deltaTime) * speed);
+            if (front)
+            {
+                this.transform.Translate((Vector3.right * Time.deltaTime) * speed);
+                this.transform.localScale = new Vector3(startScale.x, startScale.y, startScale.z);
+            }
+            else
+            {
+                this.transform.Translate((Vector3.left * Time.deltaTime) * speed);
+                this.transform.localScale = new Vector3(-startScale.x, startScale.y, startScale.z);
+            }
         }
-        else
+
+        if (fly)
         {
-            this.transform.Translate((Vector3.left  * Time.deltaTime) * speed);
+            if (inverseFly && !breakActive)
+            {
+                this.transform.Translate((Vector3.down * Time.deltaTime) * speed);
+            }
+            else if (!breakActive)
+                this.transform.Translate((Vector3.up * Time.deltaTime) * speed);
         }
     }
 
@@ -35,9 +69,9 @@ public class Enemy : MonoBehaviour {
         {
             this.gameObject.GetComponentInChildren<EnemyHit>().HitOff();
 
-            other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0,400));
-            Invoke("Restart", 1f);
+            other.gameObject.GetComponent<Player>().Die();
+            GameObject.Find("Level").GetComponent<Level>().MoveCamera = false;
+            Invoke("Restart", 2f);
         }
 
     }
@@ -45,6 +79,25 @@ public class Enemy : MonoBehaviour {
     public void DestroyEnemy()
     {
         Destroy(this.gameObject);
+    }
+
+    public void Break()
+    {
+        breakActive = !breakActive;
+
+        if (fly)
+        {
+            Invoke("Break", timeBreak);
+            Invoke("InverseFly", timeBreak * 2);
+        }
+    }
+
+    public void InverseFly()
+    {
+        inverseFly = !inverseFly;
+        if (!breakActive)
+            Invoke("InverseFly", timeInverseFly);
+
     }
 
     public void InverseDirection()

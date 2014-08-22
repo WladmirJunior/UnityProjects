@@ -46,20 +46,39 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Action.cs" />
+     <Compile Include="Assets\Scripts\ActionSpider.cs" />
      <Compile Include="Assets\Scripts\BackGround.cs" />
+     <Compile Include="Assets\Scripts\Brigde.cs" />
+     <Compile Include="Assets\Scripts\ChangeParent.cs" />
      <Compile Include="Assets\Scripts\Duck.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyHit.cs" />
+     <Compile Include="Assets\Scripts\FinishLevel.cs" />
+     <Compile Include="Assets\Scripts\Flame.cs" />
      <Compile Include="Assets\Scripts\GUITouchScroll.cs" />
      <Compile Include="Assets\Scripts\HoleHit.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />
      <Compile Include="Assets\Scripts\MainScreen.cs" />
+     <Compile Include="Assets\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\Pause.cs" />
+     <Compile Include="Assets\Scripts\Piranha.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Rhino.cs" />
+     <Compile Include="Assets\Scripts\SavePoint.cs" />
      <Compile Include="Assets\Scripts\SelectionLevel.cs" />
+     <Compile Include="Assets\Scripts\Spider.cs" />
+     <Compile Include="Assets\Scripts\SpiderDamage.cs" />
+     <Compile Include="Assets\Scripts\SpiderHit.cs" />
+     <Compile Include="Assets\Scripts\StoneFall.cs" />
      <Compile Include="Assets\Scripts\TouchButton.cs" />
      <Compile Include="Assets\Scripts\TouchGUI.cs" />
+     <Compile Include="Assets\Scripts\TouchPause.cs" />
+     <Compile Include="Assets\Scripts\Web.cs" />
+     <Compile Include="Assets\Scripts\WebSpider.cs" />
+     <None Include="Assets\Fonts\bangers\OFL.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

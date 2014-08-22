@@ -6,9 +6,12 @@ public enum LevelMode
     STATIC,
     MOVE_UP,
     MOVE_FRONT,
+    FOLLOW,
 }
 
 public class Level : MonoBehaviour {
+
+    public Transform Initial, Save1, Save2;
 
     public float itemsAmount;
     public GameObject gui;
@@ -36,11 +39,25 @@ public class Level : MonoBehaviour {
         set { moveCamera = value; }
     }
     private Player player;
+    public GameObject playerGame;
+
+    public GUIStyle GameFont;
 
     public GameObject s1, s2, s3;
 
-    void Start()
+    void Awake()
     {
+        if(PlayerPrefs.GetInt("Level - " + Application.loadedLevel + " SavePoint") == 1)
+            Instantiate(playerGame, Save1.position, Quaternion.identity).name = "Player";
+        else if(PlayerPrefs.GetInt("Level - " + Application.loadedLevel + " SavePoint") == 2)
+            Instantiate(playerGame, Save2.position, Quaternion.identity).name = "Player";
+        else
+            Instantiate(playerGame, Initial.position, Quaternion.identity).name = "Player";
+    }
+
+    void Start()
+    {        
+
         gui.SetActive(false);
         player = GameObject.Find("Player").GetComponent<Player>();
         timeMove /= 100;
@@ -50,13 +67,11 @@ public class Level : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        
-        
-
         Gizmos.color = Color.red;
         Gizmos.DrawLine(p, v);
         Gizmos.DrawLine(l, t);
     }
+
 
     void FixedUpdate()
     {
@@ -69,6 +84,30 @@ public class Level : MonoBehaviour {
 
         switch (levelMode)
         {
+            case LevelMode.FOLLOW:
+
+                if (moveCamera)
+                {
+                    positionCamera = Camera.main.transform.position;
+                    positionCamera.x = player.transform.position.x;
+                    positionCamera.y = player.transform.position.y;
+                    if (positionCamera.x < 0)
+                        positionCamera.x = 0;
+                    if (positionCamera.x > limitEndLevel)
+                        positionCamera.x = limitEndLevel;
+
+                    Camera.main.transform.position = positionCamera;
+
+                    if (player.transform.position.y + 2.5F < p.y)
+                    {
+                        player.controllable = false;
+                        player.Stop();
+                        Invoke("RestartLevel", 1);
+                    }
+                }
+
+            break;
+
             case LevelMode.STATIC:
                 if (moveCamera)
                 {
@@ -81,6 +120,13 @@ public class Level : MonoBehaviour {
                     
                     Camera.main.transform.position = positionCamera;
 
+                    if (player.transform.position.y + 2.5F < p.y)
+                    {
+                        player.controllable = false;
+                        player.Stop();
+                        Invoke("RestartLevel", 1);
+                    }
+
                     // Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, new Vector3(this.transform.position.x, this.transform.position.y , Camera.main.transform.position.z), 0.2f); // (transform.position.x, transform.position.y, Camera.main.transform.position.z);
                     //Camera.main.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, Camera.main.transform.position.z);
                 }
@@ -92,21 +138,31 @@ public class Level : MonoBehaviour {
                 Invoke("StartLevel", timeStartLevel);
             }
 
-                if (!endLevel && startLevel)
+                
+                if (player.controllable)
                 {
-                    Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y + timeMove, Camera.main.transform.position.z);
+                    positionCamera = Camera.main.transform.position;
+                    positionCamera.x = player.transform.position.x;
+                    if (positionCamera.x < 0)
+                        positionCamera.x = 0;
+                    if (positionCamera.x > limitEndLevel)
+                        positionCamera.x = limitEndLevel;
 
-                    if (player.transform.position.y + 8 < p.y)
+                    if (startLevel && !endLevel)
                     {
-                        player.controllable = false;
-                        player.Stop();
-                        Invoke("RestartLevel", 1);
+                        positionCamera.y = Camera.main.transform.position.y + timeMove;
                     }
+                    Camera.main.transform.position = positionCamera;
                 }
-                else
+                    //Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y + timeMove, Camera.main.transform.position.z);
+
+                if (player.transform.position.y + 2.5F < p.y)
                 {
-                    Camera.main.transform.position = new Vector3(player.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+                    player.controllable = false;
+                    player.Stop();
+                    Invoke("RestartLevel", 1);
                 }
+
 
             break;
             case LevelMode.MOVE_FRONT:
@@ -131,20 +187,20 @@ public class Level : MonoBehaviour {
             
             //}
 
-        if (player.itens == itemsAmount && !endLevel)
-        {
-            timeFinishLevel = Time.timeSinceLevelLoad;
-            endLevel = true;
-            EndLevel();
-        }
+        //if (player.itens == itemsAmount && !endLevel)
+        //{
+        //    timeFinishLevel = Time.timeSinceLevelLoad;
+        //    endLevel = true;
+        //    EndLevel();
+        //}
 
     }
 
     void OnGUI()
     {
 
-        GUI.Label(new Rect(500, 500, 100, 100), Time.timeSinceLevelLoad + "");
-        GUI.Label(new Rect(100, 125, 200, 100), "Itens: " + player.itens + "/" + itemsAmount);
+        GUI.Label(new Rect(500, 500, 100, 100), Time.timeSinceLevelLoad + "", GameFont);
+        GUI.Label(new Rect(100, 125, 200, 100), "Itens: " + player.itens + "/" + itemsAmount, GameFont);
         //if (player.itens == itemsAmount)
         //{
         //    GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 100), "Muito bem!!");
@@ -163,10 +219,14 @@ public class Level : MonoBehaviour {
         Application.LoadLevel(Application.loadedLevel);
     }
 
-    void EndLevel()
+    public void EndLevel()
     {
+        timeFinishLevel = Time.timeSinceLevelLoad;
+        endLevel = true;
+
         player.controllable = false;
-        player.Stop();
+        player.Stop();        
+
         gui.SetActive(true);
 
         s1.SetActive(true);

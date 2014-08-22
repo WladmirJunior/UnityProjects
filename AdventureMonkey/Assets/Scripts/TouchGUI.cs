@@ -35,11 +35,13 @@ public class TouchGUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            PlayerPrefs.SetInt("Level - " + Application.loadedLevel + " SavePoint", 0);
             Application.LoadLevel(Application.loadedLevel);
         }
 
         if (Input.GetKeyDown(KeyCode.N))
         {
+            PlayerPrefs.SetInt("Level - " + int.Parse(Application.loadedLevel + 1 + "") + " SavePoint", 0);
             Application.LoadLevel(Application.loadedLevel + 1);
         }
 
@@ -78,9 +80,11 @@ public class TouchGUI : MonoBehaviour
                                 Application.LoadLevel("Selection");
                             break;
                             case GUIButton.RELOAD:
+                                PlayerPrefs.SetInt("Level - " + Application.loadedLevel + " SavePoint", 0);
                                 Application.LoadLevel(Application.loadedLevel);
                             break;
                             case GUIButton.NEXT:
+                                PlayerPrefs.SetInt("Level - " + int.Parse(Application.loadedLevel + 1 +"") + " SavePoint", 0);
                                 Application.LoadLevel(Application.loadedLevel + 1);
                             break;
                             case GUIButton.EXIT:

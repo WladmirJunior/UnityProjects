@@ -23,7 +23,7 @@ public class EnemyHit : MonoBehaviour {
             other.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 200));
             
-            //this.gameObject.GetComponentInParent<Enemy>().DestroyEnemy();
+            this.gameObject.GetComponentInParent<Enemy>().DestroyEnemy();
         }
 
     }

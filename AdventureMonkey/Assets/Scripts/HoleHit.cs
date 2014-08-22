@@ -3,16 +3,13 @@ using System.Collections;
 
 public class HoleHit : MonoBehaviour {
 
-    private bool active = true;
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (active && other.gameObject.tag == "Player")
         {
-            Invoke("Restart", 3f);
-            other.gameObject.GetComponent<Player>().controllable = false;
-            other.gameObject.GetComponent<Player>().Stop();
-            //other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 800));
+            other.gameObject.GetComponent<Player>().Die();
+            GameObject.Find("Level").GetComponent<Level>().MoveCamera = false;
+            Invoke("Restart", 2f);
             active = false;
         }
         

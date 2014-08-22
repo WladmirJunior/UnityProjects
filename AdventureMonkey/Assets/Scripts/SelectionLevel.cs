@@ -4,8 +4,12 @@ using System.Collections;
 public class SelectionLevel : MonoBehaviour
 {
 
+    public float widthPercent = 0.2F;
     public float widthButton;
     public float iniX, iniY;
+
+    public GUIStyle lockedStyle, unlockedStyle;
+    public GUIContent content;
 
     public Texture star;
 
@@ -19,7 +23,7 @@ public class SelectionLevel : MonoBehaviour
 
     void Update() // Change to Start()
     {
-        widthButton = Screen.width * 0.2F;
+        widthButton = Screen.width * widthPercent;
         iniX = Screen.width * 0.06F;
         iniY = Screen.height * 0.05F;
 
@@ -56,15 +60,22 @@ public class SelectionLevel : MonoBehaviour
                 else
                 {
                     sunH = (widthButton * i + Screen.width * h);
-                }                                      
+                }
+
+                content.text = count + "";
 
                 if (PlayerPrefs.GetInt("LevelUnlock - " + count) == 1)
-                {                 
-                    if (GUI.Button(new Rect(iniX + sunW, iniY + sunH, widthButton, widthButton), "" + count)) { Application.LoadLevel(count); }
+                {                    
+
+                    if (GUI.Button(new Rect(iniX + sunW, iniY + sunH, widthButton, widthButton), content, unlockedStyle))//unlocked, selection))//"" + count,))
+                    {
+                        PlayerPrefs.SetInt("Level - " + count + " SavePoint", 0);
+                        Application.LoadLevel(count);
+                    }
                 }
                 else
-                {
-                    GUI.Button(new Rect(iniX + sunW, iniY + sunH, widthButton, widthButton), "X");
+                {              
+                    GUI.Button(new Rect(iniX + sunW, iniY + sunH, widthButton, widthButton), content, lockedStyle); // "X", locked);
                 }
 
                 int n = PlayerPrefs.GetInt("StarsLevel - "+count);

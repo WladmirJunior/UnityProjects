@@ -1,1 +1,14 @@
 C:\Users\Guilherme\Desktop\AdventureMonkey\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\nunit.framework.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\obj\Debug\Assembly-CSharp.dll
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Assembly-CSharp.dll.CodeAnalysisLog.xml
+C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Assembly-CSharp.dll.lastcodeanalysissucceeded

@@ -107,8 +107,8 @@ public class GUITouchScroll : MonoBehaviour {
 		
         //GUI.Window(0, windowRect, (GUI.WindowFunction)DoWindow, "");
 
-        Rect rScrollFrame = new Rect(listMargin.x, listMargin.y, listSize.x, listSize.y);
-        Rect rList = new Rect(0, 0, rowSize.x, numRows * rowSize.y);
+        //Rect rScrollFrame = new Rect(listMargin.x, listMargin.y, listSize.x, listSize.y);
+        //Rect rList = new Rect(0, 0, rowSize.x, numRows * rowSize.y);
 
         //scrollPosition = GUI.BeginScrollView (rScrollFrame, scrollPosition, rList, new GUIStyle(), new GUIStyle());
 

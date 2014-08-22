@@ -33,12 +33,23 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (controllable)
+        //print("vSpeed: " + rigidbody2D.velocity.y);
+
+        if (rigidbody2D.velocity.y > 8)
         {
+            rigidbody2D.velocity = new Vector2(0, 8);
+        }
+
+        if (controllable)
+        {          
+
             rigidbody2D.velocity = new Vector2(motion * speed, rigidbody2D.velocity.y);         
 
 #if UNITY_EDITOR //Para teste na unity
             rigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rigidbody2D.velocity.y);
+
+            if (Input.GetKeyDown(KeyCode.LeftShift)) speed *= 3;
+            if (Input.GetKeyUp(KeyCode.RightShift)) speed /= 3;
 #endif
 
             anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
@@ -53,7 +64,7 @@ public class Player : MonoBehaviour {
                 direction = (scale) * 1;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 rigidbody2D.AddForce(new Vector2(0, jumpForce));
             }
@@ -66,17 +77,18 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
+        //print("VSpeed: " + rigidbody2D.velocity.y);
 
         // Debug.Log("Colisor:   " + !Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround));
 
         // Verifica se esta pulando ou caindo pela sua forca vertical
         //jumping = rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.2F, whatIsGround);
         
-        if(rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround))
+        if(rigidbody2D.velocity.y != 0 && !Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround) && controllable)
         {
             jumping = true;
         }
-        if (Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround))
+        if (Mathf.Abs(rigidbody2D.velocity.y) < 2 && Physics2D.OverlapCircle(groundCheck.position, 0.1F, whatIsGround))
         {
             jumping = false;
         }
@@ -99,6 +111,16 @@ public class Player : MonoBehaviour {
         rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         anim.SetFloat("Speed", Mathf.Abs(rigidbody2D.velocity.x));
         anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
+    }
+
+    public void Die()
+    {
+        controllable = false;
+        anim.SetBool("Die", true);
+        rigidbody2D.velocity = new Vector2(0, 0);
+        rigidbody2D.AddForce(new Vector2(0, 300));
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
     }
 
 }

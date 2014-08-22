@@ -21,16 +21,21 @@ public class TouchButton : MonoBehaviour {
 
     private int touchJump;
 
-    void Awake()
+    void Start()
     {
         buttonNormal = this.guiTexture.texture;
+        controllerPlayer = GameObject.Find("Player").GetComponent<Player>();
     }
 
     void Update()
     {
         if (!controllerPlayer.controllable)
         {
-            this.gameObject.SetActive(false);
+            this.gameObject.GetComponent<GUITexture>().enabled = false;
+        }
+        else
+        {
+            this.gameObject.GetComponent<GUITexture>().enabled = true;
         }
 
         if (Input.touchCount == 0 && !controllerPlayer.jumping)
