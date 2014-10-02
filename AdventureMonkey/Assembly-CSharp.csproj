@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Action.cs" />
+     <Compile Include="Assets\Scripts\ActionGorilla.cs" />
      <Compile Include="Assets\Scripts\ActionSpider.cs" />
      <Compile Include="Assets\Scripts\BackGround.cs" />
      <Compile Include="Assets\Scripts\Brigde.cs" />
@@ -57,6 +58,9 @@
      <Compile Include="Assets\Scripts\FinishLevel.cs" />
      <Compile Include="Assets\Scripts\Flame.cs" />
      <Compile Include="Assets\Scripts\GUITouchScroll.cs" />
+     <Compile Include="Assets\Scripts\Gorila.cs" />
+     <Compile Include="Assets\Scripts\GorilaDamage.cs" />
+     <Compile Include="Assets\Scripts\GorilaHit.cs" />
      <Compile Include="Assets\Scripts\HoleHit.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />

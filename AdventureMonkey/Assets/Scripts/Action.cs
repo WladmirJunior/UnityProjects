@@ -5,6 +5,7 @@ public enum Actions
 {
     RHINHO,
     LAVA,
+    GORILA,
 }
 
 public class Action : MonoBehaviour {
@@ -16,6 +17,10 @@ public class Action : MonoBehaviour {
     public GameObject Bridge, Limited;
     GameObject Player;
     
+    // Acao do Gorila
+
+    bool moveFront = false;
+    bool followGorilla = false;
     
     // Acao de Lava
 
@@ -49,6 +54,20 @@ public class Action : MonoBehaviour {
                     Player.GetComponent<Player>().controllable = false;
                     shake = true;
                     Invoke("MoveLava", 1.5F);
+
+                    break;
+
+                case Actions.GORILA:
+
+                    this.collider2D.enabled = false;
+                    Player = GameObject.Find("Player");
+
+                    Player.GetComponent<Player>().Stop();
+            
+                    Player.GetComponent<Player>().controllable = false;
+                    this.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+                    this.camera.enabled = true;
+                    moveFront = true;
 
                     break;
             }
@@ -94,6 +113,32 @@ public class Action : MonoBehaviour {
         {
             this.transform.position = new Vector3(this.transform.position.x + Random.Range(-0.2F, 0.2F), this.transform.position.y + Random.Range(-0.2F, 0.2F), this.transform.position.z);
         }
+        if (moveFront)
+        {
+            if (transform.position.x < 163)
+            {
+                this.transform.Translate(new Vector3(+0.15F, 0, 0));
+            }
+            else
+            {
+                Target.GetComponent<Gorila>().Preparing();
+                moveFront = false;
+                Invoke("StartJump", 1.5F);                
+            }
+        }
+        if (followGorilla)
+        {
+            if (transform.position.x < 181)
+            {
+                this.transform.Translate(new Vector3(+0.15F, 0, 0));
+            }
+            else
+            {
+                followGorilla = false;
+                Invoke("EndAction", 4F);
+            }
+        }
+
 	}
 
     void MoveForward() 
@@ -101,11 +146,18 @@ public class Action : MonoBehaviour {
         moveForward = true;
     }
 
+    void StartJump()
+    {
+        followGorilla = true;
+    }
+
     void EndAction()
     {
-        Limited.SetActive(true);
+        if(ActionState == Actions.RHINHO)
+            Limited.SetActive(true);
         this.camera.enabled = false;
-        Player.GetComponent<Player>().controllable = true;  
+        Player.GetComponent<Player>().controllable = true;
+        Destroy(this.gameObject);
     }
 
 }

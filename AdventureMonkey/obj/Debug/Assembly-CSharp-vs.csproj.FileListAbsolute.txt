@@ -10,5 +10,3 @@ C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug
 C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
 C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\obj\Debug\Assembly-CSharp.dll
 C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\obj\Debug\Assembly-CSharp.pdb
-C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Assembly-CSharp.dll.CodeAnalysisLog.xml
-C:\Users\Guilherme\Documents\GitHub\UnityProjects\AdventureMonkey\Temp\bin\Debug\Assembly-CSharp.dll.lastcodeanalysissucceeded

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using System.Collections;
 
 public enum TypeDistance
@@ -8,18 +8,29 @@ public enum TypeDistance
     HORIZONTAL_VERTICAL,
 }
 
+public enum TypeFall 
+{
+    ONE, 
+    TWO,
+}
+
 public class StoneFall : MonoBehaviour {
 
 
     public float distance, timeFall;
     public bool destroy;
     public TypeDistance DistanceCalc;
-    public Animator anim;
+    public TypeFall typeFalling;
+    public GameObject animation;
     private GameObject Player;
 
+    private Animator anim;
+
+    public GameObject parent;
 
     void Start()
     {
+        if (animation != null) { anim = animation.GetComponent<Animator>(); }
         Player = GameObject.Find("Player");
         rigidbody2D.isKinematic = true;
 
@@ -34,7 +45,9 @@ public class StoneFall : MonoBehaviour {
             if (Vector2.Distance(new Vector2(Player.transform.position.x, 0), new Vector2(transform.position.x, 0)) < distance)
             {
                 print("Cair");
-                //anim.SetBool("Swing", true);
+
+                if (typeFalling == TypeFall.TWO) { anim.SetBool("Swing", true); }
+                
                 Invoke("Fall", timeFall);
             }
         }
@@ -45,7 +58,7 @@ public class StoneFall : MonoBehaviour {
                 if (Vector2.Distance(new Vector2(0, Player.transform.position.y), new Vector2(0, transform.position.y)) < distance)
                 {
                     print("Cair");
-                    //anim.SetBool("Swing", true);
+                    if (typeFalling == TypeFall.TWO) { anim.SetBool("Swing", true); }
                     Invoke("Fall", timeFall);
                 }
             }
@@ -54,8 +67,8 @@ public class StoneFall : MonoBehaviour {
         {
             if (Vector2.Distance(new Vector2(Player.transform.position.x, Player.transform.position.y), new Vector2(transform.position.x, transform.position.y)) < distance)
             {
-                print("Cair");
-                //anim.SetBool("Swing", true);
+
+                if (typeFalling == TypeFall.TWO) { anim.SetBool("Swing", true); }
                 Invoke("Fall", timeFall);
             }
         }
@@ -63,9 +76,14 @@ public class StoneFall : MonoBehaviour {
 
     void Fall()
     {
+        if (typeFalling == TypeFall.TWO) { anim.SetBool("Swing", false); }
+
         rigidbody2D.isKinematic = false;
-        if(destroy)
+        if (destroy)
+        {
             Destroy(this.gameObject, 2F);
+            if (parent != null) { Destroy(parent, 2f); }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
