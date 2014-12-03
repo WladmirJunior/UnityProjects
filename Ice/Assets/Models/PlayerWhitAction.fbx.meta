@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: 66dcc2413f214e542b7dfdf04d18e287
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature|Arm.L
+    100004: Armature|Arm.R
+    100006: Armature|Elbow.L
+    100008: Armature|Elbow.R
+    100010: Armature|Foot.L
+    100012: Armature|Foot.R
+    100014: Armature|Foot2.L
+    100016: Armature|Foot2.R
+    100018: Armature|Hand.L
+    100020: Armature|Hand.R
+    100022: Armature|Hand2.L
+    100024: Armature|Hand2.R
+    100026: Armature|Hand3.L
+    100028: Armature|Hand3.R
+    100030: Armature|Hand4.L
+    100032: Armature|Hand4.R
+    100034: Armature|Head
+    100036: Armature|IK_foot.L
+    100038: Armature|IK_foot.R
+    100040: Armature|IK_hand.L
+    100042: Armature|IK_hand.R
+    100044: Armature|Knee.L
+    100046: Armature|Knee.R
+    100048: Armature|L.L
+    100050: Armature|L.R
+    100052: Armature|Leher
+    100054: Armature|Root
+    100056: Armature|Ski.L
+    100058: Armature|Ski.R
+    100060: Armature|Spine
+    100062: Armature|Spine2
+    100064: Armature|Thumb.L
+    100066: Armature|Thumb.R
+    100068: Armature|Thumb2.L
+    100070: Armature|Thumb2.R
+    100072: Armature|Topi
+    100074: Cylinder
+    100076: //RootNode
+    100078: Skier
+    400000: Armature
+    400002: Armature|Arm.L
+    400004: Armature|Arm.R
+    400006: Armature|Elbow.L
+    400008: Armature|Elbow.R
+    400010: Armature|Foot.L
+    400012: Armature|Foot.R
+    400014: Armature|Foot2.L
+    400016: Armature|Foot2.R
+    400018: Armature|Hand.L
+    400020: Armature|Hand.R
+    400022: Armature|Hand2.L
+    400024: Armature|Hand2.R
+    400026: Armature|Hand3.L
+    400028: Armature|Hand3.R
+    400030: Armature|Hand4.L
+    400032: Armature|Hand4.R
+    400034: Armature|Head
+    400036: Armature|IK_foot.L
+    400038: Armature|IK_foot.R
+    400040: Armature|IK_hand.L
+    400042: Armature|IK_hand.R
+    400044: Armature|Knee.L
+    400046: Armature|Knee.R
+    400048: Armature|L.L
+    400050: Armature|L.R
+    400052: Armature|Leher
+    400054: Armature|Root
+    400056: Armature|Ski.L
+    400058: Armature|Ski.R
+    400060: Armature|Spine
+    400062: Armature|Spine2
+    400064: Armature|Thumb.L
+    400066: Armature|Thumb.R
+    400068: Armature|Thumb2.L
+    400070: Armature|Thumb2.R
+    400072: Armature|Topi
+    400074: Cylinder
+    400076: //RootNode
+    400078: Skier
+    4300000: Cylinder
+    4300002: Skier
+    7400000: Armature|Skier
+    9500000: //RootNode
+    13700000: Cylinder
+    13700002: Skier
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Skier
+      takeName: Armature|Skier
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Armature|IK_foot.L
+        weight: 1
+      - path: Armature/Armature|IK_foot.R
+        weight: 1
+      - path: Armature/Armature|IK_hand.L
+        weight: 1
+      - path: Armature/Armature|IK_hand.R
+        weight: 1
+      - path: Armature/Armature|Spine
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.L/Armature|Foot.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.L/Armature|Foot.L/Armature|Foot2.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.L/Armature|Foot.L/Armature|Foot2.L/Armature|Ski.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.R/Armature|Foot.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.R/Armature|Foot.R/Armature|Foot2.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Root/Armature|Knee.R/Armature|Foot.R/Armature|Foot2.R/Armature|Ski.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L/Armature|Hand.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L/Armature|Hand.L/Armature|Hand2.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L/Armature|Hand.L/Armature|Hand2.L/Armature|Hand3.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L/Armature|Hand.L/Armature|Hand2.L/Armature|Hand3.L/Armature|Hand4.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L/Armature|Hand.L/Armature|L.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L/Armature|Hand.L/Armature|Thumb.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.L/Armature|Elbow.L/Armature|Hand.L/Armature|Thumb.L/Armature|Thumb2.L
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R/Armature|Hand.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R/Armature|Hand.R/Armature|Hand2.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R/Armature|Hand.R/Armature|Hand2.R/Armature|Hand3.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R/Armature|Hand.R/Armature|Hand2.R/Armature|Hand3.R/Armature|Hand4.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R/Armature|Hand.R/Armature|L.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R/Armature|Hand.R/Armature|Thumb.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Arm.R/Armature|Elbow.R/Armature|Hand.R/Armature|Thumb.R/Armature|Thumb2.R
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Leher
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Leher/Armature|Head
+        weight: 1
+      - path: Armature/Armature|Spine/Armature|Spine2/Armature|Leher/Armature|Head/Armature|Topi
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

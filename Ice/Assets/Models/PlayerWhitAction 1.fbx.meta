@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 2183b5bc5665762498832648ef3874f6
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature|Arm.L
+    100004: Armature|Arm.R
+    100006: Armature|Elbow.L
+    100008: Armature|Elbow.R
+    100010: Armature|Foot.L
+    100012: Armature|Foot.R
+    100014: Armature|Foot2.L
+    100016: Armature|Foot2.R
+    100018: Armature|Hand.L
+    100020: Armature|Hand.R
+    100022: Armature|Hand2.L
+    100024: Armature|Hand2.R
+    100026: Armature|Hand3.L
+    100028: Armature|Hand3.R
+    100030: Armature|Hand4.L
+    100032: Armature|Hand4.R
+    100034: Armature|Head
+    100036: Armature|IK_foot.L
+    100038: Armature|IK_foot.R
+    100040: Armature|IK_hand.L
+    100042: Armature|IK_hand.R
+    100044: Armature|Knee.L
+    100046: Armature|Knee.R
+    100048: Armature|L.L
+    100050: Armature|L.R
+    100052: Armature|Leher
+    100054: Armature|Root
+    100056: Armature|Ski.L
+    100058: Armature|Ski.R
+    100060: Armature|Spine
+    100062: Armature|Spine2
+    100064: Armature|Thumb.L
+    100066: Armature|Thumb.R
+    100068: Armature|Thumb2.L
+    100070: Armature|Thumb2.R
+    100072: Armature|Topi
+    100074: //RootNode
+    100076: Skier
+    400000: Armature
+    400002: Armature|Arm.L
+    400004: Armature|Arm.R
+    400006: Armature|Elbow.L
+    400008: Armature|Elbow.R
+    400010: Armature|Foot.L
+    400012: Armature|Foot.R
+    400014: Armature|Foot2.L
+    400016: Armature|Foot2.R
+    400018: Armature|Hand.L
+    400020: Armature|Hand.R
+    400022: Armature|Hand2.L
+    400024: Armature|Hand2.R
+    400026: Armature|Hand3.L
+    400028: Armature|Hand3.R
+    400030: Armature|Hand4.L
+    400032: Armature|Hand4.R
+    400034: Armature|Head
+    400036: Armature|IK_foot.L
+    400038: Armature|IK_foot.R
+    400040: Armature|IK_hand.L
+    400042: Armature|IK_hand.R
+    400044: Armature|Knee.L
+    400046: Armature|Knee.R
+    400048: Armature|L.L
+    400050: Armature|L.R
+    400052: Armature|Leher
+    400054: Armature|Root
+    400056: Armature|Ski.L
+    400058: Armature|Ski.R
+    400060: Armature|Spine
+    400062: Armature|Spine2
+    400064: Armature|Thumb.L
+    400066: Armature|Thumb.R
+    400068: Armature|Thumb2.L
+    400070: Armature|Thumb2.R
+    400072: Armature|Topi
+    400074: //RootNode
+    400076: Skier
+    4300000: Skier
+    7400000: Armature|Idle
+    7400002: Armature|Skier
+    7400004: Armature|Skier Jump
+    9500000: //RootNode
+    13700000: Skier
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
